@@ -16,7 +16,7 @@ struct link *next;
 }link;
 
 //函数声明 
-link *Cbook();
+
 void mainmenu();
 void menu1();
 void glmenu();
@@ -25,6 +25,7 @@ void jhmenu();
 void print(link *head);
 void  hold(link *head);
 void holdcx(link *t);
+link *Cbook();
 link *findnumber(link *head);
 link *findboookname(link *head);
 link *findauthor(link *head);
@@ -249,4 +250,43 @@ exit(0);
 }
 }
 }
+}
+void mainmenu()
+{
+printf("\n**************************************************\n");
+printf("\n**            欢迎使用图书管理系统              **\n");
+printf("\n**           1.进入系统");
+printf("\t0.退出系统              **\n");
+printf("\n**************************************************\n");
+printf("\n   请选择");
+}
+
+void menu1()
+{
+
+printf("\n**************************************************\n");
+printf("\n**             1.录入所有书籍信息               **\n");
+printf("\n**             2.进入图书管理系统               **\n");
+printf("\n**             3.进入图书查询系统               **\n");
+printf("\n**             4.进入图书借还系统               **\n");
+printf("\n**             5.保存所有图书信息               **\n");
+printf("\n**             6.显示菜单                       **\n");
+printf("\n**             7.返回上级菜单                   **\n");
+printf("\n**************************************************\n");
+printf("\n请选择");
+}
+
+void glmenu()
+{
+
+ printf("\n**************************************************\n");
+ printf("\n**             1.显示所有图书信息               **\n");
+ printf("\n**             2.添加一本图书信息               **\n");
+ printf("\n**             3.修改一本图书信息               **\n");
+ printf("\n**             4.删除一本图书信息               **\n");
+ printf("\n**             5.保存所有图书信息               **\n");
+ printf("\n**             6.返回上级菜单                   **\n");
+ printf("\n**************************************************\n");
+ printf("\n请选择");
+
 }
