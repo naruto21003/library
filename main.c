@@ -425,3 +425,26 @@ void holdcx(link *t)
 	fclose(fp);
 	printf("信息已保存!!!");
 }
+
+
+link *findnumber(link *head)
+{
+char key[100];
+link *h,*t1=NULL;
+
+printf("请输入图书的编号：");
+getchar();
+gets(key);
+
+
+for(h=head;h!=NULL;h=h->next)
+{
+   if(strcmp(key,h->number)==0)
+   {
+	   t1=h;
+	   break;
+   }
+   
+}
+return t1;
+} 
