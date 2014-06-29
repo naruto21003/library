@@ -251,6 +251,48 @@ exit(0);
 }
 }
 }
+link *Cbook()
+{
+int n=0;
+link *p,*q,*head;
+FILE *fp;
+fp=fopen("图书信息.txt","r+");
+if(fp==NULL)
+printf("没有找到文件，请检查……");
+p=(link *)malloc(sizeof(link));
+if(p==NULL)
+printf("申请内存出错！！！\n");
+
+fscanf(fp,"%s%s%s%s%s",p->number,p->bookname,p->author,p->publish,p->time);
+fscanf(fp,"%f",&p->price);
+fscanf(fp,"%s",p->status);
+while(feof(fp)==0)
+{
+n++;
+if(n==1)
+{
+	head=p;
+}
+else
+{
+q=p;
+p=(link *)malloc(sizeof(link));
+if(p==NULL)
+printf("申请内存出错！！！\n");
+
+fscanf(fp,"%s%s%s%s%s",p->number,p->bookname,p->author,p->publish,p->time);
+fscanf(fp,"%f",&p->price);
+fscanf(fp,"%s",p->status);
+q->next=p;
+
+}
+}
+p->next=NULL;
+fclose(fp);
+printf("信息已录入！！！");
+return head;
+}
+
 void mainmenu()
 {
 printf("\n**************************************************\n");
