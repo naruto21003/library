@@ -332,3 +332,96 @@ void glmenu()
  printf("\n请选择");
 
 }
+
+void cxmenu()
+{
+ printf("\n**************************************************\n");
+ printf("\n**             1.显示所有图书信息               **\n");
+ printf("\n**             2.按编号查询图书                 **\n");
+ printf("\n**             3.按书名查询图书                 **\n");
+ printf("\n**             4.按作者查询图书                 **\n");
+ printf("\n**             5.保存所查询图书的信息           **\n");
+ printf("\n**             6.返回上级菜单                   **\n");
+ printf("\n**************************************************\n");
+ printf("\n请选择");
+
+}
+
+void jhmenu()
+{
+printf("\n**************************************************\n");
+printf("\n**             1.借书                           **\n");
+printf("\n**             2.还书                           **\n");
+printf("\n**             3.返回上级菜单                   **\n");
+printf("\n**************************************************\n");
+printf("\n请选择");	
+} 
+ 
+void print(link *head)
+{
+	link *p;
+	p=head;
+	if(p==NULL)
+	{
+	printf("文件中没有图书信息\n");
+	}
+	else{
+		
+	
+	printf("\n");
+	printf("\n**************************************************\n");
+	printf("\n编号\t\t书名\t\t作者\t\t出版社\t\t出版时间\t\t价格\t\t状态\n"); 
+	while(p!=NULL)
+	{	
+	    printf("\n");
+		printf("%s\t%s\t%s\t%s\t%s",p->number,p->bookname,p->author,p->publish,p->time);
+		printf("\t\t%.2f",p->price);
+		printf("\t\t%s",p->status);
+		printf("\n");
+		p=p->next;
+	}
+}
+}
+
+
+void  hold(link *head)
+{
+link *p;
+FILE *fp;
+fp=fopen("图书信息.txt","w+");
+if(fp==NULL)
+{
+printf("文件操作出错！！！");
+exit(1);	
+}
+p=head;
+	
+for(;p!=NULL;p=p->next)
+{   fprintf(fp,"\n");
+	fprintf(fp,"%s\t%s\t%s\t%s\t%s",p->number,p->bookname,p->author,p->publish,p->time);
+	fprintf(fp,"\t\t%.2f",p->price);
+	fprintf(fp,"\t\t%s",p->status);
+		
+}
+fclose(fp);
+printf("信息已保存。");
+}
+
+void holdcx(link *t)
+{
+	link *p=NULL;
+	FILE *fp;
+	fp=fopen("查询.txt","a+");
+	p=t;
+	fprintf(fp,"查询到的信息为：\n");
+	fprintf(fp,"\n");
+	fprintf(fp,"\n**************************************************\n");
+	fprintf(fp,"\n编号\t\t书名\t\t作者\t\t出版社\t\t出版时间\t\t价格\t\t状态\n");
+	fprintf(fp,"\n");
+	fprintf(fp,"%s\t%s\t%s\t%s\t%s",p->number,p->bookname,p->author,p->publish,p->time);
+	fprintf(fp,"\t\t%.2f",p->price);
+	fprintf(fp,"\t\t%s",p->status);
+	fprintf(fp,"\n");
+	fclose(fp);
+	printf("信息已保存!!!");
+}
