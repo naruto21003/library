@@ -448,3 +448,110 @@ for(h=head;h!=NULL;h=h->next)
 }
 return t1;
 } 
+link *findboookname(link *head)
+{
+char key[100];
+link *h,*t2=NULL;
+
+printf("请输入图书的书名：");
+getchar();
+gets(key);
+
+for(h=head;h!=NULL;h=h->next)
+{
+   if(strcmp(key,h->bookname)==0)
+   {
+	   t2=h;
+	   break;
+   }
+}
+return  t2;
+}
+
+link *findauthor(link *head)
+{
+char key[100];
+link *h,*t3=NULL;
+
+printf("请输入作者姓名：");
+getchar();
+gets(key);
+
+for(h=head;h!=NULL;h=h->next)
+{ 
+	if(strcmp(key,h->author)==0)
+   {
+	   t3=h;
+	   break;
+   }
+   
+}
+return  t3;
+	
+}
+
+link *add(link *head)
+{
+	link *h,*h1;
+	h1=head;
+	h=(link *)malloc(sizeof(link));
+	if(h==NULL)
+	{
+		printf("申请内存出错！！！");
+		exit(1);
+	}
+	printf("请输入添加图书的信息");
+	printf("\n");
+	printf("\n**************************************************\n");
+	printf("\n编号\t\t书名\t\t作者\t\t出版社\t\t出版时间\t\t价格\t\t状态\n");
+	scanf("%s%s%s%s%s",h->number,h->bookname,h->author,h->publish,h->time);
+	scanf("%f",&h->price);
+	scanf("%s",h->status);
+    h->next=h1;
+    return h;
+}
+
+link *sortnumber(link *head)
+{
+	link *p,*q,*temp;
+    temp=(link *)malloc(sizeof(link));
+    if(temp==NULL)
+    {
+    	printf("申请内存出错！！！");
+    	exit(1);
+    }
+
+	for(p=head;p!=NULL;p=p->next)
+	  {
+        for(q=p->next;q!=NULL;q=q->next)
+		{
+			if(strcmp(p->number,q->number)>0)
+		  {
+			 strcpy(temp->number,p->number);
+			 strcpy(temp->bookname,p->bookname);
+			 strcpy(temp->author,p->author);
+			 strcpy(temp->publish,p->publish);
+			 strcpy(temp->time,p->time);
+			  temp->price=p->price;
+			 strcpy(temp->status,p->status);
+			 strcpy(p->number,q->number);
+			 strcpy(p->bookname,q->bookname);
+			 strcpy(p->author,q->author);
+			  strcpy(p->publish,q->publish);
+			 strcpy(p->time,q->time);
+			 p->price=q->price;
+			 strcpy(p->status,temp->status); 
+			  strcpy(q->number,temp->number);
+			 strcpy(q->bookname,temp->bookname);
+			 strcpy(q->author,temp->author);
+			 strcpy(q->publish,temp->publish);
+			 strcpy(q->time,temp->time);
+			 q->price=temp->price;
+			 strcpy(q->status,temp->status);
+		  }  
+			 
+		  }
+	       }
+	       return head;
+  
+      } 
