@@ -23,7 +23,7 @@ void glmenu();
 void cxmenu();
 void jhmenu();
 void print(link *head);
-void  hold(link *head);
+void hold(link *head);
 void holdcx(link *t);
 link *Cbook();
 link *findnumber(link *head);
@@ -555,3 +555,85 @@ link *sortnumber(link *head)
 	       return head;
   
       } 
+      
+link *delbook(link *head)
+{
+int k=0;
+char str[10];
+link *h,*t,*p;
+h=t=p=head;
+
+printf("请输入要删除图书的书名:");
+getchar();
+gets(str);
+for(;p!=NULL;p=p->next)
+{
+	k++;
+   if(k>2)
+   {
+   t=t->next;
+   }
+
+    if((strcmp(p->bookname,str)==0)&&(k==1))
+   {
+   	  h=p->next;
+         
+   }
+	    else if(strcmp(p->bookname,str)==0&&k>1)
+		{ 
+	      t->next=p->next;
+		 
+		}
+		 else  if(strcmp(p->bookname,str)==0&&p->next==NULL)
+		   {
+		     t=NULL;
+		     
+		   }
+
+}
+
+return h;
+}
+
+
+link *revamp(link *head)
+{
+	link *h,*t;
+	h=head;
+	
+	t=findboookname(h);
+	if(t==NULL)
+	printf("没有找到……");
+	else
+	{
+		        printf("修改前图书信息为：");
+   				printf("\n");
+                printf("\n**************************************************\n");
+            	printf("\n编号\t\t书名\t\t作者\t\t出版社\t\t出版时间\t\t价格\t\t状态\n"); 
+            	
+	            printf("\n");
+	        	printf("%s\t%s\t%s\t%s\t%s",t->number,t->bookname,t->author,t->publish,t->time);
+	        	printf("\t\t%.2f",t->price);
+	        	printf("\t\t%s",t->status);
+	        	printf("\n");
+	}
+	 printf("请输入这本书的（除书名外）所有信息：\n");
+         printf("\n**************************************************\n");
+	 printf("\n编号\t\t作者\t\t出版社\t\t出版时间\t\t价格\t\t状态\n"); 
+	 printf("\n");
+	 scanf("%s%s%s%s",t->number,t->author,t->publish,t->time);
+	 scanf("%f",&t->price);
+	 scanf("%s",t->status);
+	 printf("修改后图书信息为：");
+	 printf("\n");
+     printf("\n**************************************************\n");
+ 	 printf("\n编号\t\t书名\t\t作者\t\t出版社\t\t出版时间\t\t价格\t\t状态\n"); 
+            	
+     printf("\n");
+ 	 printf("%s\t%s\t%s\t%s\t%s",t->number,t->bookname,t->author,t->publish,t->time);
+ 	 printf("\t\t%.2f",t->price);
+ 	 printf("\t\t%s",t->status);
+ 	 printf("\n");
+	 
+	 return head;
+    }
