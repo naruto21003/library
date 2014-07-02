@@ -1,6 +1,6 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
 
 typedef struct link
 {
@@ -15,17 +15,16 @@ struct link *next;
 
 }link;
 
-//函数声明 
 
+link *Cbook();
 void mainmenu();
 void menu1();
 void glmenu();
 void cxmenu();
 void jhmenu();
 void print(link *head);
-void hold(link *head);
+void  hold(link *head);
 void holdcx(link *t);
-link *Cbook();
 link *findnumber(link *head);
 link *findboookname(link *head);
 link *findauthor(link *head);
@@ -36,33 +35,33 @@ link *revamp(link *head);
 link *borrowbook(link *head);
  link *returnbook(link *head);
  
- //主函数 
+  
 main()
 {
 int a,b,c,d,e;
 link *h,*t;
 
-L:system("cls");
+L:system("cls"); 
 mainmenu();
-while(1) 
+while(1)
 {
 scanf("%d",&a);
 switch(a)
 {
 case 1:
    {
-   B: system("cls"); 
+   B: system("cls");
    menu1();
    while(1)
    {
    	scanf("%d",&b);
    	switch(b)
    	{
-    case 1: 
+    case 1:
 	   {
    	     h=Cbook();
 	   }break;
-   	case 2:
+   	case 2: 
 	   {
 	   system("cls");
 	   glmenu();
@@ -75,7 +74,7 @@ case 1:
 		   {
 		   print(h);
 		   }break;
-		   case 2: 
+		   case 2:
 		   {
 		   h=add(h);
 		   h=sortnumber(h);
@@ -94,7 +93,7 @@ case 1:
    			print(h);
    		   
 			  }break;
-		   case 5: 
+		   case 5:
 		   {
 		   hold(h); 
 		   }break;
@@ -117,7 +116,7 @@ case 1:
     		scanf("%d",&d);
     		switch(d)
     		{
-   	           case 1: 
+   	           case 1:
 				  {
 				   print(h);
 				  }break;
@@ -209,7 +208,7 @@ case 1:
 	scanf("%d",&e);
 	switch(e)
 	{
-		case 1: 
+		case 1:
 		{
 		borrowbook(h);
 		}break;
@@ -243,7 +242,7 @@ case 1:
    
    }
    }break;
-case 0: 
+case 0:
 {
 printf("\t\t\t感谢使用，再见！！！");
 exit(0);
@@ -251,6 +250,8 @@ exit(0);
 }
 }
 }
+
+ 
 link *Cbook()
 {
 int n=0;
@@ -291,6 +292,7 @@ p->next=NULL;
 fclose(fp);
 printf("信息已录入！！！");
 return head;
+
 }
 
 void mainmenu()
@@ -302,7 +304,7 @@ printf("\t0.退出系统              **\n");
 printf("\n**************************************************\n");
 printf("\n   请选择");
 }
-
+ 
 void menu1()
 {
 
@@ -332,7 +334,7 @@ void glmenu()
  printf("\n请选择");
 
 }
-
+ 
 void cxmenu()
 {
  printf("\n**************************************************\n");
@@ -356,7 +358,7 @@ printf("\n**             3.返回上级菜单                   **\n");
 printf("\n**************************************************\n");
 printf("\n请选择");	
 } 
- 
+
 void print(link *head)
 {
 	link *p;
@@ -406,7 +408,7 @@ for(;p!=NULL;p=p->next)
 fclose(fp);
 printf("信息已保存。");
 }
-
+ 
 void holdcx(link *t)
 {
 	link *p=NULL;
@@ -425,7 +427,6 @@ void holdcx(link *t)
 	fclose(fp);
 	printf("信息已保存!!!");
 }
-
 
 link *findnumber(link *head)
 {
@@ -448,6 +449,7 @@ for(h=head;h!=NULL;h=h->next)
 }
 return t1;
 } 
+
 link *findboookname(link *head)
 {
 char key[100];
@@ -464,6 +466,7 @@ for(h=head;h!=NULL;h=h->next)
 	   t2=h;
 	   break;
    }
+   
 }
 return  t2;
 }
@@ -478,8 +481,8 @@ getchar();
 gets(key);
 
 for(h=head;h!=NULL;h=h->next)
-{ 
-	if(strcmp(key,h->author)==0)
+{
+   if(strcmp(key,h->author)==0)
    {
 	   t3=h;
 	   break;
@@ -532,16 +535,18 @@ link *sortnumber(link *head)
 			 strcpy(temp->author,p->author);
 			 strcpy(temp->publish,p->publish);
 			 strcpy(temp->time,p->time);
-			  temp->price=p->price;
+			 temp->price=p->price;
 			 strcpy(temp->status,p->status);
+			 
 			 strcpy(p->number,q->number);
 			 strcpy(p->bookname,q->bookname);
 			 strcpy(p->author,q->author);
-			  strcpy(p->publish,q->publish);
+			 strcpy(p->publish,q->publish);
 			 strcpy(p->time,q->time);
 			 p->price=q->price;
 			 strcpy(p->status,temp->status); 
-			  strcpy(q->number,temp->number);
+			  
+		     strcpy(q->number,temp->number);
 			 strcpy(q->bookname,temp->bookname);
 			 strcpy(q->author,temp->author);
 			 strcpy(q->publish,temp->publish);
@@ -551,11 +556,15 @@ link *sortnumber(link *head)
 		  }  
 			 
 		  }
-	       }
-	       return head;
+	  
+	  }
+
+	
+    
+return head;
   
-      } 
-      
+} 
+
 link *delbook(link *head)
 {
 int k=0;
@@ -576,7 +585,7 @@ for(;p!=NULL;p=p->next)
 
     if((strcmp(p->bookname,str)==0)&&(k==1))
    {
-   	  h=p->next;
+      h=p->next;
          
    }
 	    else if(strcmp(p->bookname,str)==0&&k>1)
@@ -594,7 +603,6 @@ for(;p!=NULL;p=p->next)
 
 return h;
 }
-
 
 link *revamp(link *head)
 {
@@ -617,8 +625,9 @@ link *revamp(link *head)
 	        	printf("\t\t%s",t->status);
 	        	printf("\n");
 	}
+    
 	 printf("请输入这本书的（除书名外）所有信息：\n");
-         printf("\n**************************************************\n");
+     printf("\n**************************************************\n");
 	 printf("\n编号\t\t作者\t\t出版社\t\t出版时间\t\t价格\t\t状态\n"); 
 	 printf("\n");
 	 scanf("%s%s%s%s",t->number,t->author,t->publish,t->time);
@@ -637,3 +646,68 @@ link *revamp(link *head)
 	 
 	 return head;
     }
+    
+
+link *borrowbook(link *head)
+{
+	link *h,*p;
+	char ch,ch1[100]="在库",ch2[100]="不在库";
+	h=head;
+	
+	printf("\n**************************************************\n");
+	printf("\t\t欢迎使用借书系统!!!\n");
+	p=findboookname(h);
+	if(p==NULL)
+	printf("借书失败，书库中没有这本书！！！");
+	else if(strcmp(p->status,ch2)==0)
+	printf("借书失败，图书不在库！！！");
+	else 
+	{
+	printf("确认借出？Y/N:");
+	scanf("%c",&ch);
+	getchar(); 
+	if(ch=='Y'||ch=='y')
+	{   
+	    strcpy(p->status,ch2); 
+		printf("借书成功，请返回上级菜单保存信息！！！");
+	    
+	}
+	if(ch=='N'||ch=='n')
+	{
+		printf("你没有借任何书！！！"); 
+	}
+	
+	} 
+return head; 
+
+} 
+
+ link *returnbook(link *head)
+ {
+ 	link *h,*p;
+ 	char ch,ch1[100]="在库",ch2[100]="不在库";
+ 	h=head;
+ 	printf("\n**************************************************\n");
+	printf("\t\t欢迎使用还书系统!!!\n");
+	p=findboookname(h);
+	if(p==NULL)
+	printf("还书失败，这不是本书库的书！！");
+    else
+    {
+    	printf("确认还书？Y/N:");
+    	scanf("%c",&ch);
+	    getchar(); 
+	   if(ch=='Y'||ch=='y')
+	   {   
+	    strcpy(p->status,ch1); 
+		printf("还书成功，请返回上级菜单保存信息！！！");
+	    
+	   }
+	      if(ch=='N'||ch=='n')
+	  {
+	    	printf("你没有还书！！！"); 
+	  }
+     }
+ 	return head;
+ }
+
