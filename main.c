@@ -16,7 +16,7 @@ struct link *next;
 }link;
 
 
-link *Cbook();
+
 void mainmenu();
 void menu1();
 void glmenu();
@@ -25,6 +25,7 @@ void jhmenu();
 void print(link *head);
 void  hold(link *head);
 void holdcx(link *t);
+link *Cbook();
 link *findnumber(link *head);
 link *findboookname(link *head);
 link *findauthor(link *head);
