@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="lodash.min.js"></script>
+	<script type="text/javascript">
+		var json={"a":1,
+				"b":2,
+				"c":3,
+				"d":4,
+				"e":2
+		}
+		var results=_.reduce(json,function(result,value,key){
+			(result[value] || (result[value]=[])).push(key);
+			return result;
+		},{});
+		console.log(results);
+		alert(results);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

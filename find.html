@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="lodash.min.js"></script>
+	<script type="text/javascript" src="vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<as></as>
+	</div>
+	<template id="cApp">
+		<ul>
+			<li v-for="msg in msgs">
+				<bs v-bind:my-message="msg"></bs>
+			</li>
+		</ul>
+	</template>
+	<template id="bApp">
+		<p>{{myMessage.age}}</p>
+		<button v-on:click="reply">{{myMessage.user}}</button>
+	</template>
+</body>
+<script type="text/javascript">
+Vue.component("bs",{
+	template:"#bApp",
+	props:["myMessage"],
+	methods:{
+		reply:function(){
+			var con=_.find(this.myMessage,function(o) { return o.age < 40; });
+			console.log(con);
+		}
+	}
+})
+	Vue.component("as",{
+		template:"#cApp",
+		data:function(){
+			return {
+				msgs:[
+					{"user":"lalds","age":"40"},
+					{"user":"dfsdf","age":"32"},
+					{"user":"dfbgb","age":"65"},
+					{"user":"dfsdf","age":"23"},
+					{"user":"bgbgb","age":"80"}
+				]
+			}
+		}
+	})
+
+	new Vue({
+		el:"#app"
+	})
+</script>
+</html>

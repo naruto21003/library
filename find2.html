@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="lodash.min.js"></script>
+	<script type="text/javascript" src="vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<as v-bind:my-message="msg" v-for="msg in msgs"></as>
+		<button v-on:click="reply">按钮</button>
+		<button v-on:click="reply2">按钮2</button>
+		<button v-on:click="reply3">按钮3</button>
+		<button v-on:click="reply4">按钮4</button>
+	</div>
+	<template id="cApp">
+		<ul>
+			<li>
+				<p>{{myMessage.age}}</p>
+			</li>
+		</ul>
+	</template>
+</body>
+<script type="text/javascript">
+	Vue.component("as",{
+		template:"#cApp",
+		props:["myMessage"]
+	})
+
+	new Vue({
+		el:"#app",
+		data:{
+			msgs:[
+				{"user":"lalds","age":"40","active":false},
+				{"user":"dfsdf","age":"32","active":false},
+				{"user":"dfbgb","age":"65","active":true},
+				{"user":"dfsdf","age":"23","active":false},
+				{"user":"bgbgb","age":"80","active":false}
+			]
+			
+		},
+		methods:{
+			reply:function(){
+				var con=_.find(this.msgs,function(o) { return o.age < 40; });
+				console.log(con.user);
+			},
+			reply2:function(){
+				var con=_.find(this.msgs,{"user":"dfsdf","age":"23"});
+				console.log(con.user);
+			},
+			reply3:function(){
+				var con=_.find(this.msgs,["age","80"]);
+				console.log(con.user);
+			},
+			reply4:function(){
+				var con=_.find(this.msgs,"active");
+				console.log(con.user);
+			},
+		}
+	})
+</script>
+</html>

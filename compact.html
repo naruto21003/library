@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="lodash.min.js"></script>
+	<script type="text/javascript" src="vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<p>{{message}}</p>
+		<button v-on:click="reply">按钮</button>
+	</div>
+</body>
+<script type="text/javascript">
+	new Vue({
+		el:"#app",
+		data:{
+			message:[
+				1,2,1,2,5,2,3,3,2,5,6,7
+			]
+		},
+		methods:{
+			reply:function(){
+				var arr=_.lastIndexOf(this.message,2,2);
+				this.message=arr;
+			}
+		}
+	})
+</script>
+</html>

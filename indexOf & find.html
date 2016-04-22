@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="lodash.min.js"></script>
+	<script type="text/javascript">
+		var arr=[
+			{"a":1,"b":2},
+			{"a":2,"b":12},
+			{"a":3,"b":10},
+			{"a":4,"b":9},
+			{"a":5,"b":8},
+			{"a":6,"b":7}
+		];
+		var arr2=[
+			"aa","bb","cc",12,"12"
+		];
+		var arr3=[12,3,4,5,{"a":1,"b":2},
+			{"a":2,"b":12},"12"]
+
+		console.log(_.indexOf(arr,{"a":1,"b":2}));
+		console.log(_.find(arr,{"a":1,"b":2}));
+
+
+		console.log(_.indexOf(arr2,"12"));
+		console.log(_.find(arr2,"12"));
+
+		console.log(_.indexOf(arr3,"12"));
+		console.log(_.indexOf(arr3,{"a":2,"b":12}));
+		console.log(_.find(arr3,{"a":2,"b":12}));
+		console.log(_.find(arr3,function(o){return o.a==2}));
+		console.log(_.find(arr3,12));
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
